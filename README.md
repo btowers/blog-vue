@@ -9,7 +9,7 @@ A vue.js frontend for a MEVN stack
 ### **Requirements**
 
 - Node.js v10.0+
-- MongoDB Community Server or MongoDB Atlas account (https://www.mongodb.com/)
+- VueCLI (https://cli.vuejs.org/)
 
 ### **Install**
 
