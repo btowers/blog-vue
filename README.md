@@ -1,10 +1,10 @@
-<img src="https://quantumdevop.com/wp-content/uploads/2019/04/vue-logo-1-740x414.png" width="150px" align="right" />
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/1184px-Vue.js_Logo_2.svg.png" width="150px" align="right" />
 
-# Node.js Blog Backend
+# Vue Blog Frontend
 
 ### **Description**
 
-A node.js backend for a MEVN stack using JSON Web Token for authentication
+A vue.js frontend for a MEVN stack
 
 ### **Requirements**
 
