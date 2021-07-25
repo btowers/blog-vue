@@ -2,7 +2,7 @@
   <b-container>
     <b-row>
       <b-col />
-      <b-col cols="6">
+      <b-col cols="8">
         <div v-for="post in posts" :key="post._id">
           <Post :title="post.title" :body="post.body" :image="post.image" />
         </div>
