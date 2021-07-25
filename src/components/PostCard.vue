@@ -27,9 +27,7 @@ export default {
     };
   },
   methods: {
-    openPost(hovered) {
-      this.isHovered = hovered;
-    },
+    openPost() {},
     handleHover(hovered) {
       this.isHovered = hovered;
     },
