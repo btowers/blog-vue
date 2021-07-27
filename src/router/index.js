@@ -4,8 +4,6 @@ import VueRouter from "vue-router";
 // Routes
 import {} from "@/auth/utils";
 
-import dashboard from "./routes/dashboard";
-
 Vue.use(VueRouter);
 
 const router = new VueRouter({
@@ -15,10 +13,28 @@ const router = new VueRouter({
     return { x: 0, y: 0 };
   },
   routes: [
-    { path: "/", redirect: { name: "home" } },
-
-    ...dashboard,
-
+    {
+      path: "/",
+      name: "home",
+      component: () => import("@/layouts/MainLayout.vue"),
+      children: [
+        {
+          path: "/",
+          name: "postlist",
+          component: () => import("@/views/PostList.vue"),
+        },
+        {
+          path: "/add",
+          name: "postcreate",
+          component: () => import("@/views/PostCreate.vue"),
+        },
+        {
+          path: "/:id",
+          name: "postview",
+          component: () => import("@/views/PostView.vue"),
+        },
+      ],
+    },
     {
       path: "*",
       redirect: "error-404",

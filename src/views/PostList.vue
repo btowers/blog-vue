@@ -14,7 +14,7 @@
 <script>
 import { BContainer, BRow, BCol } from "bootstrap-vue";
 import axios from "axios";
-import Post from "./PostCard.vue";
+import Post from "./components/PostCard.vue";
 export default {
   components: { Post, BContainer, BRow, BCol },
   name: "Body",
