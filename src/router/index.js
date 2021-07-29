@@ -24,14 +24,26 @@ const router = new VueRouter({
           component: () => import("@/views/PostList.vue"),
         },
         {
-          path: "/add",
+          path: "/post/add",
           name: "postcreate",
           component: () => import("@/views/PostCreate.vue"),
         },
         {
-          path: "/:id",
+          path: "/post/:id",
           name: "postview",
           component: () => import("@/views/PostView.vue"),
+        },
+      ],
+    },
+    {
+      path: "/login",
+      name: "home",
+      component: () => import("@/layouts/FlatLayout.vue"),
+      children: [
+        {
+          path: "/",
+          name: "login",
+          component: () => import("@/views/Login.vue"),
         },
       ],
     },

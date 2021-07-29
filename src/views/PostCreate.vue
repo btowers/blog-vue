@@ -2,21 +2,41 @@
   <b-container>
     <b-row>
       <b-col />
-      <b-col cols="8">
-        Hello!
+      <b-col cols="10">
+        <div class="my-3">
+          <h3>Create a New Post</h3>
+        </div>
+        <b-form-input
+          class="my-3"
+          v-model="post.body"
+          placeholder="Title"
+        ></b-form-input>
+        <b-form-input
+          class="my-3"
+          v-model="post.intro"
+          placeholder="A short description"
+        ></b-form-input>
+        <div style="background: white;">
+          <vue-editor v-model="post.body"></vue-editor>
+        </div>
+        <b-button @click="saveContent" class="my-3">Save</b-button>
       </b-col>
       <b-col />
     </b-row>
   </b-container>
 </template>
 <script>
-import { BContainer, BRow, BCol } from "bootstrap-vue";
+import { BContainer, BRow, BCol, BFormInput, BButton } from "bootstrap-vue";
+import { VueEditor } from "vue2-editor";
 import axios from "axios";
+
 export default {
-  components: { BContainer, BRow, BCol },
+  components: { BContainer, BRow, BCol, BFormInput, BButton, VueEditor },
   name: "Body",
   data() {
     return {
+      post: { title: "", intro: "", body: "" },
+
       posts: [
         {
           title: "hola",

@@ -1,16 +1,15 @@
 <template>
   <div v-b-hover="handleHover">
     <b-card
-      @click="openPost"
-      id="postcard"
-      class="mt-3"
-      :class="{ shadowClass: isHovered }"
-      img-width="100"
-      :img-src="image"
-      img-top
-      ><b-card-title>{{ title }}</b-card-title>
+      @click="openPost(post._id)"
+      :img-src="post.image"
+      img-alt="Card image"
+      img-left
+      :class="{ shadowClass: isHovered, 'my-3': true }"
+    >
+      <b-card-title>{{ post.title }}</b-card-title>
       <b-card-text class="text-truncate">
-        {{ text }}
+        {{ post.intro }}
       </b-card-text>
     </b-card>
   </div>
@@ -19,7 +18,7 @@
 import { BCard, BCardTitle, BCardText } from "bootstrap-vue";
 export default {
   components: { BCard, BCardTitle, BCardText },
-  props: { title: String, text: String, image: String },
+  props: { post: Object },
   name: "Post",
   data() {
     return {
@@ -27,7 +26,9 @@ export default {
     };
   },
   methods: {
-    openPost() {},
+    openPost(id) {
+      this.$router.push(`/post/${id}`);
+    },
     handleHover(hovered) {
       this.isHovered = hovered;
     },
