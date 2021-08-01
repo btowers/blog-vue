@@ -13,6 +13,7 @@
 </template>
 <script>
 import { BContainer, BRow, BCol } from "bootstrap-vue";
+import { mapMutations } from "vuex";
 import axios from "axios";
 import Post from "./components/PostCard.vue";
 export default {
@@ -20,24 +21,7 @@ export default {
   name: "Body",
   data() {
     return {
-      posts: [
-        {
-          title: "hola",
-          body:
-            "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-          image: "https://placekitten.com/200/200",
-        },
-        {
-          title: "chau",
-          body: "este es un texto de prueba....",
-          image: "https://placekitten.com/200/200",
-        },
-        {
-          title: "quetal",
-          body: "este es un texto de prueba....",
-          image: "https://placekitten.com/200/200",
-        },
-      ],
+      posts: [],
     };
   },
   mounted() {
@@ -46,19 +30,23 @@ export default {
   methods: {
     getPosts() {
       console.log("getting posts...");
-      this.loading = true;
+      this.loading(true);
       axios
         .get("/api/post/")
         .then((response) => {
           console.log(response.data);
           this.posts = response.data;
-          this.loading = false;
+          this.loading(false);
         })
         .catch((err) => {
           console.log(err);
-          this.loading = false;
+          this.loading(false);
         });
     },
+
+    ...mapMutations({
+      loading: "user/LOADING",
+    }),
   },
 };
 </script>

@@ -15,7 +15,6 @@ const router = new VueRouter({
   routes: [
     {
       path: "/",
-      name: "home",
       component: () => import("@/layouts/MainLayout.vue"),
       children: [
         {
@@ -37,7 +36,6 @@ const router = new VueRouter({
     },
     {
       path: "/login",
-      name: "home",
       component: () => import("@/layouts/FlatLayout.vue"),
       children: [
         {

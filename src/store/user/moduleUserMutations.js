@@ -13,4 +13,10 @@ export default {
       }
     }
   },
+
+  LOADING(state, payload) {
+    console.log("changing loading" + payload);
+
+    state.loading = payload;
+  },
 };

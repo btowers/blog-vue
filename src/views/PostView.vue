@@ -3,13 +3,18 @@
     <b-row>
       <b-col />
       <b-col cols="10">
-        <h1 class="pt-3" style="font-family: 'Playfair Display', serif;">
+        <h1 class="py-3" style="font-family: 'Playfair Display', serif;">
           {{ post.title }}
         </h1>
-        <h5 class="font-weight-light">{{ post.intro }}</h5>
-        <b-row align-h="between" class="pb-5">
-          <b-col cols="4">{{ post.author }}</b-col>
-          <b-col cols="4">{{ post.createdAt | dateFormat }}</b-col>
+        <b-row align-h="between" class="pb-2">
+          <b-col cols="4">
+            <b-icon-person-circle />{{ " " + post.author }}
+          </b-col>
+          <b-col cols="4">
+            <div class="d-flex justify-content-end">
+              {{ post.createdAt | dateFormat }}
+            </div>
+          </b-col>
         </b-row>
         <hr />
         <p style="font-family: 'Roboto', sans-serif;">
@@ -21,13 +26,13 @@
   </b-container>
 </template>
 <script>
-import { BContainer, BRow, BCol } from "bootstrap-vue";
+import { BContainer, BRow, BCol, BIconPersonCircle } from "bootstrap-vue";
 import axios from "axios";
 import dayjs from "dayjs";
 
 export default {
-  components: { BContainer, BRow, BCol },
-  name: "Body",
+  components: { BContainer, BRow, BCol, BIconPersonCircle },
+  name: "PostView",
   data() {
     return {
       post: { title: "", body: "" },

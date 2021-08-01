@@ -1,5 +1,5 @@
 export default {
-  AppActiveUser: { firstName: '', lastName: '', activeMeliID: null, ability: null },
+  loading: true,
 
   AppActiveMeli: {
     id: null,
@@ -7,10 +7,10 @@ export default {
     competitors: [],
     seller_reputation: null,
     settings: {
-      locale: 'es',
+      locale: "es",
       questions: {
-        autoReply: { greetings: [], fixed: [], aditional: [], schedule: [] }
-      }
-    }
-  }
-}
+        autoReply: { greetings: [], fixed: [], aditional: [], schedule: [] },
+      },
+    },
+  },
+};

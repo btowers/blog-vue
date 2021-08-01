@@ -4,18 +4,18 @@
   ----------------------------------------------------------------------------------------
   Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
   Author: Pixinvent
-  Author URL: http://www.themeforest.net/user/pixinvent
+  Author URL: http://www.themeforest.net/Post/pixinvent
 ==========================================================================================*/
 
-import state from './moduleUserState.js'
-import mutations from './moduleUserMutations.js'
-import actions from './moduleUserActions.js'
-import getters from './moduleUserGetters.js'
+import state from "./modulePostState.js";
+import mutations from "./modulePostMutations.js";
+import actions from "./modulePostActions.js";
+import getters from "./modulePostGetters.js";
 
 export default {
   namespaced: true,
   state,
   mutations,
   actions,
-  getters
-}
+  getters,
+};
