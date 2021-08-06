@@ -1,24 +1,22 @@
 <template>
   <b-container>
     <b-row>
-      <b-col />
-      <b-col cols="8">
+      <b-col>
         <div v-for="post in posts" :key="post._id">
           <Post :post="post" />
         </div>
       </b-col>
-      <b-col />
     </b-row>
   </b-container>
 </template>
 <script>
-import { BContainer, BRow, BCol } from "bootstrap-vue";
-import { mapMutations } from "vuex";
-import axios from "axios";
-import Post from "./components/PostCard.vue";
+import { BContainer, BRow, BCol } from 'bootstrap-vue';
+import { mapMutations } from 'vuex';
+import axios from 'axios';
+import Post from './components/PostCard.vue';
 export default {
   components: { Post, BContainer, BRow, BCol },
-  name: "Body",
+  name: 'Body',
   data() {
     return {
       posts: [],
@@ -28,11 +26,15 @@ export default {
     this.getPosts();
   },
   methods: {
+    ...mapMutations({
+      loading: 'user/LOADING',
+    }),
+
     getPosts() {
-      console.log("getting posts...");
+      console.log('getting posts...');
       this.loading(true);
       axios
-        .get("/api/post/")
+        .get('/api/post/')
         .then((response) => {
           console.log(response.data);
           this.posts = response.data;
@@ -43,10 +45,6 @@ export default {
           this.loading(false);
         });
     },
-
-    ...mapMutations({
-      loading: "user/LOADING",
-    }),
   },
 };
 </script>

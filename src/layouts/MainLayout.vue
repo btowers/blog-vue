@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header />
-    <b-overlay :show="loading" rounded="sm">
+    <b-overlay :show="loading" spinner-variant="info" rounded="sm">
       <b-container class="vh-100">
         <transition name="component-fade" mode="out-in">
           <router-view />

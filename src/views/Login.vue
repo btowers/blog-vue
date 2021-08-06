@@ -2,7 +2,7 @@
   <b-row class="justify-content-center vh-100" align-v="center">
     <b-card style="width: 400px">
       <b-row class="justify-content-center">
-        <b-img class="mb-3" height="100" src="logo.png" />
+        <b-img class="mb-3" height="100" src="/logo.png" />
       </b-row>
       <hr />
       <b-form @submit="onSubmit">
@@ -34,25 +34,30 @@
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios';
+import { mapMutations } from 'vuex';
 
 export default {
   data() {
     return {
-      credentials: { email: "", password: "" },
+      credentials: { email: '', password: '' },
     };
   },
   methods: {
+    ...mapMutations({
+      saveUser: 'user/saveUser',
+    }),
     onSubmit() {
-      console.log(this.credentials);
       axios
-        .post("/api/user/login", this.credentials)
+        .post('/api/user/login', this.credentials)
         .then((response) => {
           console.log(response.data);
-          this.$router.push("/");
+          this.saveUser(response.data);
+          this.$router.push('/');
         })
         .catch((err) => {
-          console.error(err);
+          console.log(err.message);
+          console.log(err);
         });
     },
   },

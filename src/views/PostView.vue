@@ -1,6 +1,6 @@
 <template>
   <b-container>
-    <b-row>
+    <b-row v-if="!isLoading">
       <b-col />
       <b-col cols="10">
         <h1 class="py-3" style="font-family: 'Playfair Display', serif;">
@@ -8,7 +8,7 @@
         </h1>
         <b-row align-h="between" class="pb-2">
           <b-col cols="4">
-            <b-icon-person-circle />{{ " " + post.author }}
+            <b-icon-person-circle />{{ ' ' + post.author }}
           </b-col>
           <b-col cols="4">
             <div class="d-flex justify-content-end">
@@ -26,42 +26,49 @@
   </b-container>
 </template>
 <script>
-import { BContainer, BRow, BCol, BIconPersonCircle } from "bootstrap-vue";
-import axios from "axios";
-import dayjs from "dayjs";
+import { BContainer, BRow, BCol, BIconPersonCircle } from 'bootstrap-vue';
+import { mapMutations, mapState } from 'vuex';
+import axios from 'axios';
+import dayjs from 'dayjs';
 
 export default {
   components: { BContainer, BRow, BCol, BIconPersonCircle },
-  name: "PostView",
+  name: 'PostView',
   data() {
     return {
-      post: { title: "", body: "" },
+      post: { title: '', body: '' },
     };
   },
-  mounted() {
+
+  created() {
     this.getPost(this.$route.params.id);
   },
 
+  computed: { ...mapState({ isLoading: (state) => state.user.loading }) },
+
   methods: {
+    ...mapMutations({
+      loading: 'user/LOADING',
+    }),
+
     getPost(id) {
-      console.log("getting posts...");
-      this.loading = true;
+      this.loading(true);
       axios
-        .get("/api/post/" + id)
+        .get('/api/post/' + id)
         .then((response) => {
           this.post = response.data;
-          this.loading = false;
+          this.loading(false);
         })
         .catch((err) => {
           console.log(err);
-          this.loading = false;
+          this.loading(false);
         });
     },
   },
 
   filters: {
     dateFormat: function(value) {
-      return dayjs(value).format("DD-MM-YYYY");
+      return dayjs(value).format('DD-MM-YYYY');
     },
   },
 };

@@ -4,18 +4,17 @@
  * e.g. If you are using cookies to store the application please update this function
  */
 
-import store from "@/store";
+import store from '@/store';
 
-// eslint-disable-next-line arrow-body-style
-export const isUserLoggedIn = async () => {
-  return true;
+export const isUserLoggedIn = () => {
+  if (store.state.user.email) return true;
+  else return false;
 };
 
 /**
  * Return User
  */
 
-// eslint-disable-next-line arrow-body-style
 export const getUserData = () => {
-  return store.state.user.AppActiveUser;
+  return store.state.user;
 };

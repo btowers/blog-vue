@@ -1,9 +1,12 @@
 <template>
   <div v-b-hover="handleHover">
     <b-card
+      style="width: 695px"
       @click="openPost(post._id)"
       :img-src="post.image"
       img-alt="Card image"
+      img-height="130"
+      img-width="200"
       img-left
       :class="{ shadowClass: isHovered, 'my-3': true }"
     >
@@ -15,11 +18,11 @@
   </div>
 </template>
 <script>
-import { BCard, BCardTitle, BCardText } from "bootstrap-vue";
+import { BCard, BCardTitle, BCardText } from 'bootstrap-vue';
 export default {
   components: { BCard, BCardTitle, BCardText },
   props: { post: Object },
-  name: "Post",
+  name: 'Post',
   data() {
     return {
       isHovered: false,
